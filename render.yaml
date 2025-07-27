@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: warehouse-backend
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn warehouse_backend.wsgi
+    plan: free
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: warehouse_backend.settings
+      - key: PYTHON_VERSION
+        value: 3.13
