@@ -14,10 +14,16 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
 from django.urls import path, include
+from django.http import HttpResponse
+
+def root_view(request):
+    return HttpResponse("<h2>Welcome to the Warehouse Management System API.<br>Visit /api/ for API endpoints.</h2>")
 
 urlpatterns = [
+    path('', root_view),
     path('admin/', admin.site.urls),
     path('api/', include('inventory.urls')),
 ]
